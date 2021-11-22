@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+//gets posts for dashboard
 router.get('/', withAuth, (req, res) => {
   console.log(req.session);
   console.log('======================');
@@ -43,7 +44,7 @@ router.get('/', withAuth, (req, res) => {
     });
 });
 
-
+// gets posts for dashboard as well
 router.get('/full', withAuth, (req, res) => {
     console.log(req.session);
     console.log('======================');

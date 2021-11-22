@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize');
 
+//.env file is loaded up into process.env
 require('dotenv').config(); 
 
+// creates connection to database
 let sequelize;
 
 if (process.env.JAWSDB_URL) {

@@ -4,6 +4,7 @@ const { Post, User, Comment } = require('../models');
 
 
 router.get('/', (req, res) => {
+  //logs session info
   Post.findAll({
     attributes: [
       'id',
@@ -27,6 +28,7 @@ router.get('/', (req, res) => {
     ]
   })
     .then(dbPostData => {
+      //passes a single post object into homepage 
       const posts = dbPostData.map(post => post.get({ plain: true }));
       res.render('homepage', { 
         posts,
@@ -60,7 +62,7 @@ router.get('/signUp', (req, res) => {
 });
 
 
-
+// single post handlebar logic
 router.get('/post/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -96,7 +98,7 @@ router.get('/post/:id', (req, res) => {
 
       const post = dbPostData.get({ plain: true });
 
-
+// pass data to template
       res.render('single-post', { 
         post,
         loggedIn: req.session.loggedIn
